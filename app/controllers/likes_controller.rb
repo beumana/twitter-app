@@ -9,6 +9,14 @@ class LikesController < ApplicationController
       format.html { redirect_to request.referrer }
     end
   end
+  
+  def destroy
+    @tweet.likes.where(user_id: current_user.id).destroy_all
+    
+    respond_to do |format|
+      formant.html { redirect_to request.referrer }
+    end
+  end
 
   private
 

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
  get "profiles" => "profiles#index"
 
   devise_for :users
-  resources :tweets
+  
+  resources :tweets do 
+   resource :like
+  end
+  
   resources :relationships
   root 'tweets#index'
   # The priority is based upon order of creation: first created -> highest priority.
